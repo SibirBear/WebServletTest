@@ -24,7 +24,7 @@ task copyToLib(type: Copy) {
     from(configurations.compile)
 }
 
-task stage(dependsOn: ['çlean', 'installDist'])
+task stage(dependsOn: ['clean', 'installDist'])
 installDist.mustRunAfter clean
 
 jar {
