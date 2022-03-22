@@ -18,6 +18,11 @@ public class MainServlet extends HttpServlet {
     private List<User> users;
     private int idCounter;
 
+    public MainServlet(List<User> users, int idCounter) {
+        this.users = users;
+        this.idCounter = idCounter;
+    }
+
     @Override
     public void init() throws ServletException {
         super.init();
