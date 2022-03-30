@@ -23,7 +23,7 @@ public class Main {
         Context ctx = app.addContext("", new File(".").getAbsolutePath());
 
         app.addServlet(ctx, WelcomeServlet.class.getSimpleName(), new WelcomeServlet());
-        ctx.addServletMappingDecoded("", MainServlet.class.getSimpleName());
+        ctx.addServletMappingDecoded("", WelcomeServlet.class.getSimpleName());
 
         app.addServlet(ctx, MainServlet.class.getSimpleName(), new MainServlet(new ArrayList<>(), 0));
         ctx.addServletMappingDecoded("/users/", MainServlet.class.getSimpleName());
