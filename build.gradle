@@ -1,6 +1,7 @@
 plugins {
     id 'war'
     id 'application'
+    id 'java'
 }
 
 group 'org.example'

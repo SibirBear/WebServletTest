@@ -1,1 +1,1 @@
-wed: java -jar build/libs/WebServletTest-1.0-SNAPSHOT.jar
+web: java -jar build/libs/WebServletTest-1.0-SNAPSHOT.jar
