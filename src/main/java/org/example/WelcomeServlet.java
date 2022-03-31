@@ -11,7 +11,15 @@ public class WelcomeServlet extends HttpServlet {
     @Override
     public void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
-        out.println("Hello, app!");
+        out.write("<html>"
+                + "<head>"
+                + "<title>Hello page</title>"
+                + "</head>"
+                + "<body>"
+                + "<h1>Main page</h1>"
+                + "<a href='/users/'>my link</a>"
+                + "</body>"
+                + "</html>");
     }
 
 }
