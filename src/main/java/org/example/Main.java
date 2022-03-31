@@ -7,6 +7,9 @@ import org.apache.catalina.startup.Tomcat;
 import java.io.File;
 import java.util.ArrayList;
 
+import static org.example.Counter.initCounter;
+import static org.example.ListUsers.initListUsers;
+
 public class Main {
 
     public static void main(String[] args) throws LifecycleException {
@@ -20,13 +23,19 @@ public class Main {
         Tomcat app = new Tomcat();
         app.setPort(port);
 
+        initCounter();
+        initListUsers();
+
         Context ctx = app.addContext("", new File(".").getAbsolutePath());
 
         app.addServlet(ctx, WelcomeServlet.class.getSimpleName(), new WelcomeServlet());
         ctx.addServletMappingDecoded("", WelcomeServlet.class.getSimpleName());
 
-        app.addServlet(ctx, MainServlet.class.getSimpleName(), new MainServlet(new ArrayList<>(), 0));
+        app.addServlet(ctx, MainServlet.class.getSimpleName(), new MainServlet());
         ctx.addServletMappingDecoded("/users/", MainServlet.class.getSimpleName());
+
+        app.addServlet(ctx, AccountServlet.class.getSimpleName(), new AccountServlet());
+        ctx.addServletMappingDecoded("/accounts/", AccountServlet.class.getSimpleName());
 
         return app;
     }

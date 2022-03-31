@@ -8,30 +8,35 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class MainServlet extends HttpServlet {
-    private List<User> users;
-    private int idCounter;
+import static org.example.Counter.getId;
+import static org.example.ListUsers.getUsers;
+import static org.example.ListUsers.addUser;
 
-    public MainServlet(List<User> users, int idCounter) {
-        this.users = users;
-        this.idCounter = idCounter;
+public class MainServlet extends HttpServlet {
+    //private List<User> users;
+    //private int idCounter;
+
+    public MainServlet() {
+        //this.users = users;
+        //this.idCounter = idCounter;
     }
 
     @Override
     public void init() throws ServletException {
         super.init();
-        this.users = new ArrayList<>();
-        this.idCounter = 0;
+        //this.users = new ArrayList<>();
+        //this.idCounter = 0;
+
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         PrintWriter pw = resp.getWriter();
-        for (User user : this.users) {
+        List<User> listUser = getUsers();
+        for (User user : listUser) {
             pw.write(user.toString());
         }
         pw.close();
@@ -41,12 +46,12 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         User user = new User();
-        user.setName(req.getParameter("name"));
+        user.setLogin(req.getParameter("name"));
         user.setId(getId());
         String date = req.getParameter("date");
         user.setBirthday(getDate(date));
 
-        this.users.add(user);
+        addUser(user);
 
     }
 
@@ -61,8 +66,8 @@ public class MainServlet extends HttpServlet {
 
     }
 
-    private Integer getId() {
+    /*public Integer getId() {
         return ++this.idCounter;
-    }
+    }*/
 
 }

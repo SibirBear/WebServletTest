@@ -5,8 +5,18 @@ import java.util.Date;
 public class User {
 
     private Integer id;
-    private String name;
+    private String login;
     private Date birthday;
+    private String password;
+
+    public User() {}
+
+    public User(Integer id, String login, String password, Date birthday) {
+        this.id = id;
+        this.login = login;
+        this.birthday = birthday;
+        this.password = password;
+    }
 
     public Integer getId() {
         return id;
@@ -16,12 +26,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getLogin() {
+        return login;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public Date getBirthday() {
@@ -32,13 +42,21 @@ public class User {
         this.birthday = birthday;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", login='" + login + '\'' +
                 ", birthday=" + birthday +
+                ", password='" + password + '\'' +
                 '}';
     }
-
 }
