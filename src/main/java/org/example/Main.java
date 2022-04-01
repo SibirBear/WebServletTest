@@ -26,7 +26,7 @@ public class Main {
         initCounter();
         initListUsers();
 
-        Context ctx = app.addWebapp("", new File(".").getAbsolutePath());
+        Context ctx = app.addWebapp("", new File("src/main/webapp").getAbsolutePath());
 
         app.addServlet(ctx, WelcomeServlet.class.getSimpleName(), new WelcomeServlet());
         ctx.addServletMappingDecoded("", WelcomeServlet.class.getSimpleName());
