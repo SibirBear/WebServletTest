@@ -11,7 +11,7 @@
       %>
   <table>
       <%
-        for (int i = 0; i < users.size(), i++ {
+        for (int i = 0; i < users.size(); i++ {
       %>
       <tr>
         <td><%= users.get(i).getId()%>
