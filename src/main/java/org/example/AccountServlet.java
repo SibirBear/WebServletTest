@@ -1,5 +1,6 @@
 package org.example;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,27 +31,37 @@ public class AccountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("id");
+        RequestDispatcher requestDispatcher = null;
 
-        User user = getUsers().stream()
-                .filter(u -> u.getId() == Integer.parseInt(id))
-                .findAny()
-                .orElse(null);
-
-        PrintWriter pw = resp.getWriter();
-
-        if (user != null) {
-            pw.write("<html>"
-                    + "<body>"
-                    + "<h1>You choose user with name " + user.getLogin() + "</h1>"
-                    + "</body>"
-                    + "</html>");
+        if (id != null) {
+            User user = getUsers().stream()
+                    .filter(u -> u.getId() == Integer.parseInt(id))
+                    .findAny()
+                    .orElse(null);
+            req.setAttribute("user", user);
+            requestDispatcher = req.getRequestDispatcher("account.jsp");
         } else {
-            pw.write("<html>"
-                    + "<body>"
-                    + "<h1>No user found with id: " + id + "</h1>"
-                    + "</body>"
-                    + "</html>");
+            req.setAttribute("users", ListUsers.getUsers());
+            requestDispatcher = req.getRequestDispatcher("accounts.jsp");
         }
+        requestDispatcher.forward(req,resp);
+
+
+//        PrintWriter pw = resp.getWriter();
+//
+//        if (user != null) {
+//            pw.write("<html>"
+//                    + "<body>"
+//                    + "<h1>You choose user with name " + user.getLogin() + "</h1>"
+//                    + "</body>"
+//                    + "</html>");
+//        } else {
+//            pw.write("<html>"
+//                    + "<body>"
+//                    + "<h1>No user found with id: " + id + "</h1>"
+//                    + "</body>"
+//                    + "</html>");
+//        }
 
     }
 
