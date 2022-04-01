@@ -11,16 +11,16 @@
       %>
   <table>
       <%
-        for (int i = 0; i < users.size(); i++ {
+        for (int i = 0; i < users.size(); i++) {
       %>
       <tr>
-        <td><%= users.get(i).getId()%>
+        <td><%= users.get(i).getId() %>
         </td>
-        <td><%= users.get(i).getLogin()%>
+        <td><%= users.get(i).getLogin() %>
         </td>
-        <td><%= users.get(i).getPassword()%>
+        <td><%= users.get(i).getPassword() %>
         </td>
-        <td><%= users.get(i).getBirthday()%>
+        <td><%= users.get(i).getBirthday() %>
         </td>
       </tr>
       <%}%>
