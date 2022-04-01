@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language=java %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Registration</title>
@@ -7,9 +7,9 @@
     <form method="post" action="/accounts/">
         Login: <input name="login" />
         <br>
-        Password: <input type="password" name="password"/>
+        Password: <input type="password" name="password" />
         <br>
-        Birthday: <input type="date" name="date"/>
+        Birthday: <input type="date" name="date" />
         <br>
         <input type="submit" value="OK" />
     </form>
