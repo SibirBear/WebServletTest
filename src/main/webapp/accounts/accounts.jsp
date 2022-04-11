@@ -22,8 +22,18 @@
         </td>
         <td><%= users.get(i).getBirthday() %>
         </td>
+        <td>
+            <button onclick="javascript:deleteAccountById(<%= accounts.get(i).getId() %>)">delete</button>
+        </td>
       </tr>
       <%}%>
   </table>
   </body>
+  <script type="text/javascript">
+      function deleteAccountById(id) {
+          return fetch('http://localhost:8091/accounts/' + id + '/', {
+              method: 'DELETE'
+          })
+      }
+  </script>
 </html>

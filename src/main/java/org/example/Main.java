@@ -35,7 +35,7 @@ public class Main {
         ctx.addServletMappingDecoded("/users/", MainServlet.class.getSimpleName());
 
         app.addServlet(ctx, AccountServlet.class.getSimpleName(), new AccountServlet());
-        ctx.addServletMappingDecoded("/accounts/", AccountServlet.class.getSimpleName());
+        ctx.addServletMappingDecoded("/accounts/*", AccountServlet.class.getSimpleName());
 
         return app;
     }

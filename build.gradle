@@ -12,6 +12,7 @@ repositories {
 }
 
 dependencies {
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.5'
     compile "javax.servlet:javax.servlet-api:4.0.1"
     compile 'org.apache.tomcat.embed:tomcat-embed-core:8.5.69'
     compile 'org.apache.tomcat.embed:tomcat-embed-jasper:8.5.69'

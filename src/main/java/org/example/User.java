@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class User {
 
@@ -59,4 +60,18 @@ public class User {
                 ", password='" + password + '\'' + "\n" +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User account = (User) o;
+        return Objects.equals(getId(), account.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
 }
